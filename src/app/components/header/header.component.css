@@ -1,0 +1,84 @@
+header{
+    background-color: #ffe713e5;
+}
+
+.navTop{
+    height: 3.5rem;
+    overflow: hidden;
+    /* outline: 1px solid blue; */
+    padding: 0.7rem 0;
+}
+
+figure{
+    position: relative;
+    height: 100%;
+    margin: 0;
+}
+
+.input-group{
+    width: 32rem;
+    height: auto;
+    border: 1px solid rgba(88, 88, 88, 0.082);
+}
+
+.input-group > input, span{
+   height: 100%; 
+   border-radius: 0;
+}
+
+.input-group > span{
+    cursor: pointer;
+}
+
+.promBox > p{
+    margin: 0 0.5rem;
+}
+
+.promBox > p, span{
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+    color: rgba(0, 0, 0, 0.699);
+}
+
+a{
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: black;
+}
+
+.navbar {
+    background-color: transparent;
+}
+
+.bi-caret-down{
+    color: gray;
+    font-size: 0.75rem;
+}
+
+.bi-person-circle, .bi-bell{
+    font-size: 1.2rem;
+    margin: 0 0.3rem;   
+}
+
+/* .purchaseOptions{
+    outline: 1px solid black;
+} */
+
+.purchaseOptions .nav-link{
+    color:rgba(43, 43, 43, 0.699);
+}
+
+.userOptions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userOptions .nav-link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+

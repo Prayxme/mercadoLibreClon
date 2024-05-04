@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="tablaCompras">
+
+        <h1>Lista de Compras</h1>
+    
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Item</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Ciudad</th>
+                <th scope="col">Descartar Producto</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let producto of productos; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ producto.nombre }}</td>
+                    <td>
+                        <figure>
+                            <img [src]="producto.imagenUrl" class="img-fluid">
+                        </figure>
+                    </td>
+                    <td>U$S: {{ producto.precio }}.00</td>
+                    <td>{{ producto.ciudad }}</td>
+                    <td>
+                        <button (click)="eliminarProducto(i)">
+                            <span>Eliminar</span>
+                            <i class="bi bi-x-circle"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr *ngIf="productos.length > 0">
+                    <td colspan="4"></td>
+                    <td>
+                        <b>
+                            Total:
+                        </b>
+                    </td>
+                    <td>
+                        <b>
+                            U$S: {{ calcularPrecioTotal() }}.00
+                        </b>
+                    </td>
+                  </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

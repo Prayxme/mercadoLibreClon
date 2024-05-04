@@ -1,0 +1,83 @@
+<div class="container">
+    <div class="d-flex justify-content-center flex-column align-items-center py-4">
+        <h1 class="mb-3">Formulario de Envío</h1>
+        <form [formGroup]="formRegistro" (ngSubmit)="onSubmit()" class="w-50">
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" name="nombre" formControlName="nombre"
+                    [ngClass]="{'is-invalid': hasErrors('nombre', 'required') || hasErrors('nombre', 'pattern')}"
+                    >
+                    <p class="text-danger" *ngIf="hasErrors('nombre', 'required')">Este campo es obligatorio</p>
+                    <p class="text-danger" *ngIf="hasErrors('nombre', 'pattern')">El nombre ingresado no es valido</p>
+                    
+                    
+                </div>
+                <div class="col">
+                    <label for="apellido" class="form-label">Apellido</label>
+                    <input type="text" class="form-control" placeholder="Apellido" aria-label="Apellido" name="apellido" formControlName="apellido"
+                    [ngClass]="{'is-invalid': hasErrors('apellido', 'required') || hasErrors('apellido', 'pattern')}"
+                    >
+                    <p class="text-danger" *ngIf="hasErrors('apellido', 'required')">Este campo es obligatorio</p>
+                    <p class="text-danger" *ngIf="hasErrors('apellido', 'pattern')">El apellido ingresado no es valido</p>
+                    
+                    
+                </div>
+            </div>
+    
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Indique su Username" name="username" formControlName="username"
+                [ngClass]="{'is-invalid': hasErrors('username', 'required') || hasErrors('username', 'pattern') || hasErrors('username', 'minlength')}"
+                >
+                <p class="text-danger" *ngIf="hasErrors('username', 'required')">Este campo es obligatorio</p>
+                <p class="text-danger" *ngIf="hasErrors('username', 'pattern')">El username ingresado no es valido</p>
+                <p class="text-danger" *ngIf="hasErrors('username', 'minlength')">El username debe ser de minimo 4 caracteres</p>
+                <!-- <div *ngIf="username.invalid && (username.dirty || username.touched)">
+                    <p class="text-danger" *ngIf="registerForm.username == ''">Este campo es obligatorio</p>
+                    <p class="text-danger" *ngIf="username.errors && registerForm.username != ''">El Username solo admite
+                        letras y numeros!</p>
+                </div>
+                <div *ngIf="!username.invalid">
+                    <p class="text-success">El Username ingresado es valido!</p>
+                </div> -->
+            </div>
+    
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class="form-control" id="email" placeholder="Indique su Email" name="email" formControlName="email"
+                [ngClass]="{'is-invalid': hasErrors('email', 'required') || hasErrors('email', 'email')}"
+                >
+                <p class="text-danger" *ngIf="hasErrors('email', 'required')">Este campo es obligatorio</p>
+                <p class="text-danger" *ngIf="hasErrors('email', 'email')">El email ingresado no es valido</p>
+            </div>
+    
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <div class="input-group" #inputPassword>
+                    <input type="password" class="form-control" id="password" placeholder="Indique su contraseña" name="contraseña" formControlName="password"
+                    [ngClass]="{'is-invalid': hasErrors('password', 'required') || hasErrors('password' , 'pattern') || hasErrors('password', 'minlength')}"
+                    >
+                    <span class="input-group-text" (click)="verPassword(inputPassword)">
+                        <i class="bi bi-eye-slash"></i>
+                    </span>
+                    <p class="text-danger" *ngIf="hasErrors('password', 'required')">Este campo es obligatorio, debe indicar una contraseña de minimo 5 caracteres!</p>
+                    <p class="text-danger" *ngIf="hasErrors('password', 'pattern')">La contraseña ingresada no es valida, debe indicar un contraseña que contenga al menos una letra, un numero y un caracter especial</p>
+                    <!-- <p class="text-danger" *ngIf="hasErrors('password', 'minlength')">La contraseña debe tener minimo 5 caracteres</p> -->
+                </div>
+
+                
+            </div>
+            <div class="mb-3" formArrayName="preferencias">
+                <button class="btn btn-warning" (click)="agregarPreferencia()">Agregar Preferencia</button>
+                <button class="btn btn-danger mx-2" *ngIf="preferencias.length > 0" (click)="removePreferencia()">Quitar Preferencias</button>
+                <div class="mb-3" *ngFor="let item of preferencias.controls; let i = index">
+                    <label for="item-{{i}}" class="form-label">Preferencia nro: {{i+1}}</label>
+                    <input type="text" class="form-control" id="item-{{i}}" [formControlName]="i">
+                </div>
+            </div>
+    
+            <button type="submit" class="btn btn-primary" [disabled]="formRegistro.status === 'INVALID'">Registrar</button>
+        </form>
+    </div>
+</div>

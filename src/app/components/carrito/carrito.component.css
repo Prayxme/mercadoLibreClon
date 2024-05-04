@@ -1,0 +1,38 @@
+.tablaCompras{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 1rem;
+    border: 1px solid #c8eff6;
+    border-radius: .3rem;
+    background: linear-gradient(266deg, rgba(228,228,249,1) 0%, rgba(197,197,228,0.865983893557423) 35%, rgba(215,238,242,1) 100%);
+}
+
+button{
+    background: #e1e1f0;
+    border: none;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 .5rem;
+    border: 1px solid gray;
+    border-radius: .3rem;
+}
+
+figure{
+    margin:0;
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+
+}
+
+.img-fluid{
+    height: 100%;
+}
+
+td{
+    align-content: center;
+}

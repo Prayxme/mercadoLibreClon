@@ -1,0 +1,35 @@
+<article>
+    <div class="container-fluid">
+        <div class="ofertasBox">
+            <h1 class="titleProductos">
+                Productos en Oferta
+            </h1>
+            <div class="row gap-3 justify-content-center py-1 mb-2 px-5">
+
+                @for (lista of listaProductos; track lista.id; let indice = $index) {
+                <div class="col-md-2 px-0 productBox"
+                    [id]="indice" #card>
+                    <mat-card class="example-card">
+                        <figure>
+                            <img mat-card-image [src]="lista.imagenUrl" alt="" class="img-fluid">
+                        </figure>
+                        <mat-card-content>
+                            <p class="productPrice my-2">
+                                U$S: {{lista.precio}}
+                            </p>
+                            <button class="btn btn-outline-primary d-flex align-items-center gap-2" 
+                            (click)="verInfo(indice, true, card)"
+                            >
+                                <span>Añadir al Carrito</span>
+                                <i class="bi bi-cart"></i>
+                            </button>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</article>
+
+<app-carrito [productos]="productosSeleccionados"></app-carrito>

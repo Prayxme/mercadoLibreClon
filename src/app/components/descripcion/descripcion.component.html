@@ -1,0 +1,90 @@
+<app-header></app-header>
+
+<section class="pb-4">
+
+    <div class="container-fluid d-flex align-items-end justify-content-between pt-5 pb-2">
+        <div class="infoCatalogo ps-2">
+            <a routerLink="/home">
+                <i class='bx bx-home'></i>
+                <span>
+                    Volver a la pagina principal
+                </span>
+            </a>
+        </div>
+
+        <div class="infoBuy">
+            <a>Compartir</a>
+            <a>Vender uno igual</a>
+        </div>
+    </div>
+
+    <div class="container-fluid productInfo my-2" *ngIf="productos">
+
+        <figure class="miniImg">
+            <img [src]="productos.imagenUrl" alt="{{ productos.nombre }}" class="img-fluid h-100">
+        </figure>
+        <figure class="productImg">
+            <img [src]="productos.imagenUrl" alt="{{ productos.nombre }}" class="img-fluid h-75">
+        </figure>
+
+        <aside class="d-flex flex-column justify-content-around px-3">
+            <div class="titleBox">
+                <p>Nuevo</p>
+                <div class="titleContent">
+                    <h2>{{ productos.nombre }}</h2>
+                    <i class='bx bx-heart' ></i>
+                </div>
+                    
+                <div class="starsIcon">
+                    <i class='bx bxs-star' ></i>
+                    <i class='bx bxs-star' ></i>
+                    <i class='bx bxs-star' ></i>
+                    <i class='bx bxs-star' ></i>
+                    <i class='bx bx-star' ></i>
+                    <p>{{productos.opiniones}} opiniones</p>
+                </div>
+            </div>
+
+            <div class="precioBox">
+                <h2 class="mb-1">
+                    U$S {{ productos.precio }}.00
+                    <span>
+                        <i class='bx bx-question-mark'></i>
+                    </span>
+                </h2>
+                <p>Bs. {{precioBolivares}},00</p>
+                <a >Ver los medios de pago</a>
+            </div>
+
+            <div class="envioBox">
+                <div class="envioContent mb-2" [ngClass]="{'text-success': productos.tipoEnvio === 'Envío Gratis', 
+                'text-danger': productos.tipoEnvio !== 'Envío Gratis'}">
+                    <i class='bx bxs-truck'></i>
+                    {{productos.tipoEnvio}}
+                </div>
+                <p class="mb-2">{{ productos.ciudad }}</p>
+                <a >Ver costos de envio</a>
+
+            </div>
+
+            <div class="footerBox">
+                <p class="mb-5 colorProduct">
+                    Color: 
+                    <b>{{productos.color}}</b>
+                </p>
+
+                <p class="unidadProduct mb-4">
+                    Cantidad:
+                    <b>
+                        {{productos.unidad}} Unidades Disponibles
+                    </b>
+                </p>
+
+                <button class="btn btn-primary">Comprar Ahora</button>
+            </div>
+
+        </aside>
+
+    </div>
+
+</section>
